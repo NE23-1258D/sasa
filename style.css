@@ -1,0 +1,355 @@
+/* style.css */
+
+/* 変数定義（推奨） */
+:root {
+    --color-green-100: #d1fae5;
+    --color-green-300: #a7f3d0;
+    --color-green-700: #047857;
+    --color-green-800: #065f46;
+    --color-gray-800: #1f2937;
+    --color-white: #ffffff;
+    --color-yellow-50: #fffdf0;
+    --color-yellow-300: #fde047; /* Tailwind yellow-300 */
+    --color-yellow-400: #facc15;
+    --color-yellow-500: #eab308; /* Tailwind yellow-500 */
+    --color-yellow-600: #eab308;
+    --color-yellow-700: #a16207;
+    --color-yellow-800: #92400e;
+    --color-blue-50: #eff6ff;
+    --color-blue-300: #93c5fd;
+    --color-blue-600: #2563eb;
+    --color-blue-700: #1d4ed8;
+    --color-red-600: #dc2626;
+    --spacing-1: 0.25rem; /* 4px */
+    --spacing-2: 0.5rem;  /* 8px */
+    --spacing-3: 0.75rem; /* 12px */
+    --spacing-4: 1rem;    /* 16px */
+    --spacing-6: 1.5rem;  /* 24px */
+    --spacing-8: 2rem;    /* 32px */
+    --spacing-12: 3rem;   /* 48px */
+    --spacing-16: 4rem;   /* 64px */
+}
+
+/* 基本的なリセットとフォント設定 */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to bottom right, var(--color-green-100), var(--color-green-300));
+    color: var(--color-gray-800);
+    overflow-x: hidden; /* アニメーションによる横スクロールを防ぐ */
+    min-height: 100vh; /* コンテンツが短い場合でも背景が画面全体を覆うように */
+}
+
+/* 画面奥から飛び出てくるような演出（初期状態） */
+.fly-in-element {
+    transform: scale(0.5) translateY(50px); /* 少し下から現れるように調整 */
+    opacity: 0;
+    transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 1s ease-out; /* より弾むようなイージング */
+}
+
+/* 画面奥から飛び出てくるような演出（アクティブ状態） */
+.fly-in-element.active {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* シナリオテキストの左から右へ浮かび上がるアニメーション（初期状態） */
+.text-reveal-hidden {
+    opacity: 0;
+    transform: translateX(-100%); /* 左に完全に隠す */
+    transition: opacity 500s ease-out, transform 500s ease-out; /* 各行のトランジション */
+    display: block; /* P要素はデフォルトでブロック要素ですが念のため */
+    white-space: nowrap; /* テキストが途中で改行されないように */
+    overflow: hidden; /* テキストが親要素からはみ出さないように */
+}
+
+/* シナリオテキストの左から右へ浮かび上がるアニメーション（アクティブ状態） */
+.text-reveal-active {
+    opacity: 1;
+    transform: translateX(0); /* 元の位置に戻る */
+}
+
+/* 背景のパララックス効果 */
+.hero-background {
+    background-image: url('https://placehold.co/1920x1080/6EE7B7/FFFFFF?text=生田緑地');
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    transition: transform 0.1s linear;
+}
+
+/* アンサーメッセージの表示領域の最低高さを確保します */
+.answer-message {
+    min-height: 2rem;
+}
+
+/* 注意事項リストの各段落に間隔を追加します */
+.notes-list p {
+    margin-bottom: 0.5rem;
+}
+
+
+/* --- 以下、Tailwind CSSクラスを置き換えるためのCSS定義 --- */
+
+/* ヘッダーセクション */
+header {
+    position: relative;
+    z-index: 10;
+    padding-top: var(--spacing-8);
+    padding-bottom: var(--spacing-8);
+    text-align: center;
+    color: var(--color-white);
+    background-color: rgba(4, 120, 87, 0.9);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+
+/* メインタイトル */
+h1#mainTitle {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+}
+@media (min-width: 768px) {
+    h1#mainTitle {
+        font-size: 4rem;
+    }
+}
+
+/* サブタイトル */
+p#subTitle {
+    margin-top: var(--spacing-4);
+    font-size: 1.25rem;
+}
+@media (min-width: 768px) {
+    p#subTitle {
+        font-size: 1.5rem;
+    }
+}
+
+/* メインコンテンツ領域 */
+main {
+    position: relative;
+    z-index: 10;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--spacing-4);
+    margin-top: var(--spacing-8);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-radius: 0.75rem;
+}
+@media (min-width: 768px) {
+    main {
+        padding: var(--spacing-8);
+    }
+}
+
+/* シナリオセクション */
+section#scenario {
+    margin-top: var(--spacing-16);
+    padding: 1.5rem;
+    background-color: #f0fdf4;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+@media (min-width: 768px) {
+    section#scenario {
+        padding: var(--spacing-8);
+    }
+}
+
+h2 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: var(--spacing-6);
+    border-bottom-width: 2px;
+    padding-bottom: var(--spacing-2);
+}
+section#scenario h2 {
+    color: var(--color-green-800);
+    border-color: var(--color-green-300);
+}
+
+/*.scenario-content {
+    /* シナリオテキストの親要素は overflow: hidden を保持し、個々のPタグが外にはみ出さないようにする */
+    /* ただし、Pタグ自体の transform は機能する */
+
+.scenario-content p {
+    font-size: 1.125rem;
+    line-height: 1.625;
+    color: #4b5563;
+    margin-bottom: var(--spacing-4);
+}
+@media (min-width: 768px) {
+    .scenario-content p {
+        font-size: 1.25rem;
+    }
+}
+
+/* アンサーセクション */
+section#answer {
+    margin-top: var(--spacing-12);
+    padding: 1.5rem;
+    background-color: var(--color-yellow-50);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+@media (min-width: 768px) {
+    section#answer {
+        padding: var(--spacing-8);
+    }
+}
+
+section#answer h2 {
+    color: var(--color-yellow-800);
+    border-color: var(--color-yellow-300);
+}
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.space-y-4 > *:not(:first-child) { margin-top: var(--spacing-4); }
+
+input#answerInput {
+    padding: var(--spacing-3);
+    border: 2px solid var(--color-yellow-400);
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 24rem;
+    text-align: center;
+    font-size: 1.125rem;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+input#answerInput:focus {
+    box-shadow: 0 0 0 2px var(--color-yellow-500);
+    border-color: var(--color-yellow-500);
+}
+
+button#submitAnswerBtn {
+    padding-left: var(--spacing-8);
+    padding-right: var(--spacing-8);
+    padding-top: var(--spacing-3);
+    padding-bottom: var(--spacing-3);
+    background-color: var(--color-yellow-600);
+    color: var(--color-white);
+    font-weight: bold;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease-in-out;
+}
+button#submitAnswerBtn:hover {
+    background-color: var(--color-yellow-700);
+    transform: scale(1.05);
+}
+
+.answer-message {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: var(--spacing-4);
+    min-height: 2rem;
+}
+.answer-message.text-green-600 {
+    color: #16a34a;
+}
+.answer-message.text-red-600 {
+    color: #dc2626;
+}
+
+/* ヒントセクション */
+section#hint {
+    margin-top: var(--spacing-12);
+    padding: 1.5rem;
+    background-color: var(--color-blue-50);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+@media (min-width: 768px) {
+    section#hint {
+        padding: var(--spacing-8);
+    }
+}
+
+section#hint h2 {
+    color: var(--color-blue-800);
+    border-color: var(--color-blue-300);
+}
+
+section#hint .flex { justify-content: center; }
+section#hint p { margin-right: var(--spacing-4); }
+
+button#goToHintPageBtn {
+    padding-left: var(--spacing-8);
+    padding-right: var(--spacing-8);
+    padding-top: var(--spacing-3);
+    padding-bottom: var(--spacing-3);
+    background-color: var(--color-blue-600);
+    color: var(--color-white);
+    font-weight: bold;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease-in-out;
+}
+button#goToHintPageBtn:hover {
+    background-color: var(--color-blue-700);
+    transform: scale(1.05);
+}
+
+/* 注意事項セクション */
+section#notes {
+    margin-top: var(--spacing-12);
+    padding: 1.5rem;
+    background-color: #f9fafb;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+@media (min-width: 768px) {
+    section#notes {
+        padding: var(--spacing-8);
+    }
+}
+
+section#notes h2 {
+    color: var(--color-gray-800);
+    border-color: #d1d5db;
+}
+
+.notes-list p {
+    color: #4b5563;
+    font-size: 1rem;
+    line-height: 1.625;
+    margin-bottom: 0.5rem;
+}
+@media (min-width: 768px) {
+    .notes-list p {
+        font-size: 1.125rem;
+    }
+}
+
+/* フッターセクション */
+footer {
+    position: relative;
+    z-index: 10;
+    padding-top: var(--spacing-8);
+    padding-bottom: var(--spacing-8);
+    margin-top: var(--spacing-12);
+    text-align: center;
+    color: var(--color-white);
+    background-color: rgba(4, 120, 87, 0.9);
+    box-shadow: 0 -10px 15px -3px rgba(0, 0, 0, 0.1), 0 -4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+}

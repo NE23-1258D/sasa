@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生田緑地脱出系ゲーム</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <div id="heroBackground" class="hero-background"></div>
+
+    <header class="relative z-10 py-8 text-center text-white bg-green-700 bg-opacity-90 shadow-lg rounded-b-3xl">
+        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight fly-in-element" id="mainTitle">生田緑地脱出系ゲーム</h1>
+        <p class="mt-4 text-xl md:text-2xl fly-in-element" id="subTitle">自然の中で謎を解き明かせ！</p>
+    </header>
+
+    <main class="relative z-10 container mx-auto p-4 md:p-8 mt-8 bg-white bg-opacity-90 shadow-xl rounded-xl">
+
+        <section id="scenario" class="section-box mt-16 p-6 md:p-8 bg-green-50 rounded-xl shadow-md">
+            <h2 class="text-3xl font-bold text-green-800 mb-6 border-b-2 border-green-300 pb-2">ゲームシナリオ</h2>
+            <div class="scenario-content overflow-hidden">
+                <p class="text-lg md:text-xl leading-relaxed text-gray-700 mb-4 text-reveal-hidden" id="scenarioText1">
+                    助けて！生田緑地が危ないの！あの時みたいにこの場所を救って！！
+                </p>
+                <p class="text-lg md:text-xl leading-relaxed text-gray-700 mb-4 text-reveal-hidden" id="scenarioText2">
+                    突如聞こえてきた声に導かれ、気づけば生田緑地の異変に巻き込まれていた参加者。
+                </p>
+                <p class="text-lg md:text-xl leading-relaxed text-gray-700 mb-4 text-reveal-hidden" id="scenarioText3">
+                    何が起きているのかもわからないまま、不思議な力やアイテムを集めながら、仲間とともに広大なフィールドを駆け巡る冒険が始まります。
+                </p>
+                <p class="text-lg md:text-xl leading-relaxed text-gray-700 mb-4 text-reveal-hidden" id="scenarioText4">
+                    森の中や道端、さまざまな場所に隠されたギミックや謎が鍵となります。
+                </p>
+                <p class="text-lg md:text-xl leading-relaxed text-gray-700 mb-4 text-reveal-hidden" id="scenarioText5">
+                    彼らは本当にボスを倒し、生田緑地を救うことができるのか――！？
+                </p>
+                <p class="text-lg md:text-xl leading-relaxed text-gray-700 text-reveal-hidden" id="scenarioText6">
+                    これは、あなたが主人公となって挑むリアルな物語です。
+                </p>
+				<p class="text-lg md:text-xl leading-relaxed text-gray-700 text-reveal-hidden" id="scenarioText7">
+                    自然と一体化した手作りの仕掛けや、工夫を凝らした謎解きを通して、現実と物語が交差する“ここでしかできない体験”を、ぜひ味わってみてください。
+                </p>
+            </div>
+        </section>
+
+        <section id="answer" class="section-box mt-12 p-6 md:p-8 bg-yellow-50 rounded-xl shadow-md">
+            <h2 class="text-3xl font-bold text-yellow-800 mb-6 border-b-2 border-yellow-300 pb-2">アンサー</h2>
+            <div class="flex flex-col items-center space-y-4">
+                <p class="text-lg text-gray-700">謎を解いて、答えを入力してください。</p>
+                <input type="text" id="answerInput" placeholder="ここに答えを入力"
+                       class="p-3 border-2 border-yellow-400 rounded-lg w-full max-w-sm text-center text-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-300">
+                <button id="submitAnswerBtn"
+                        class="px-8 py-3 bg-yellow-600 text-white font-bold rounded-lg shadow-md hover:bg-yellow-700 transition duration-300 transform hover:scale-105">
+                    アンサー！
+                </button>
+                <div id="answerMessage" class="answer-message text-xl font-semibold mt-4"></div>
+            </div>
+        </section>
+
+        <section id="hint" class="section-box mt-12 p-6 md:p-8 bg-blue-50 rounded-xl shadow-md">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 border-b-2 border-blue-300 pb-2">ヒント</h2>
+            <div class="flex justify-center">
+                <p class="text-lg text-gray-700 mr-4">どうしても分からなくなったら…</p>
+                <button id="goToHintPageBtn"
+                        class="px-8 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                    ヒントページへ
+                </button>
+            </div>
+        </section>
+
+        <section id="notes" class="section-box mt-12 p-6 md:p-8 bg-gray-50 rounded-xl shadow-md">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">注意事項</h2>
+            <div class="text-gray-700 notes-list text-base md:text-lg leading-relaxed">
+                <p>・本イベントにはスマートフォンが必要です。通信費はご自身の負担となります。</p>
+                <p>・ゲーム中の怪我、病気等に関して、主催者側は一切の責任を負いかねます。安全に十分配慮してご参加ください。</p>
+                <p>・生田緑地内の動植物、施設、物品等を持ち帰ったり、傷つけたりしないでください。</p>
+                <p>・ゲーム装置や設置物に過度な負担や衝撃を与えないでください。</p>
+                <p>・本ゲームの内容、謎、解答、写真などをSNS等で公開・発信することは固く禁じます。ネタバレにご注意ください。</p>
+                <p>・他の公園利用者や近隣住民の方々にご迷惑がかからないよう、マナーを守ってご参加ください。</p>
+                <p>・本ゲームは12歳以上の方であれば、1名様からお楽しみいただけます。</p>
+                <p>・所要時間は約90分〜120分を想定しています。</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="relative z-10 py-8 mt-12 text-center text-white bg-green-700 bg-opacity-90 shadow-t-lg rounded-t-3xl">
+        <p>&copy; 2025 生田緑地脱出系ゲーム制作チーム</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
