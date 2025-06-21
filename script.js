@@ -91,7 +91,7 @@ if (answerInput && submitAnswerBtn && answerMessage) {
         // 正解のリストを配列で定義
         const correctAnswers = [
             "かおりのその",
-            "あおいそら",
+            "あおいほし",
             "ひまわり",      // ★追加
             "ハイビスカス",  // ★追加
             "オニユリ",      // ★追加
