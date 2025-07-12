@@ -130,7 +130,7 @@ if (answerInput && submitAnswerBtn && answerMessage) {
     if (goToHintPageBtn) {
         goToHintPageBtn.addEventListener('click', () => {
             // 指定されたヒントページのURLへ遷移
-            window.location.href = "https://ne23-1258d.github.io/RPGmastor/";
+            window.location.href = "https://ne231008c-hintopage.netlify.app/";
             console.log('Navigating to hint page.'); // デバッグ用ログ
         });
     } else {
